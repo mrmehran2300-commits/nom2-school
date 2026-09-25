@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="برنامه هفتگی نهم ۲، ساعت ایران، تقویم ۱۴۰۵، تعطیلات، تکالیف و شمارش روزهای مدرسه"><meta name="theme-color" content="#02050a"><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><title>برنامه هفتگی نهم ۲ | اژدهای یخی</title>
+<style>
+:root{--bg:#02050a;--panel:#07121d;--panel2:#0b1c2b;--ice:#57d9ff;--ice2:#b8f3ff;--blue:#087cff;--text:#e9faff;--muted:#8faabd;--line:#164765;--danger:#ff5b65}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% 0,#102b44 0,#03070d 45%,#010204 100%);color:var(--text);font-family:Tahoma,"Segoe UI",sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(120deg,transparent 30%,rgba(70,210,255,.04),transparent 70%);animation:scan 7s linear infinite}
+@keyframes scan{0%{transform:translateX(-30%)}100%{transform:translateX(30%)}}
+header{position:relative;min-height:330px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid #164765}
+.dragon{position:absolute;inset:-30px;background:
+radial-gradient(ellipse at 68% 48%,rgba(0,190,255,.32),transparent 12%),
+radial-gradient(ellipse at 70% 49%,rgba(40,130,255,.18),transparent 28%),
+linear-gradient(135deg,#02070d,#071827 45%,#01050a)}
+.dragon:before{content:"🐉";position:absolute;right:8%;top:18px;font-size:180px;filter:drop-shadow(0 0 22px #08aaff);opacity:.75;transform:scaleX(-1);animation:float 4s ease-in-out infinite}
+.dragon:after{content:"";position:absolute;left:0;right:0;bottom:-20px;height:100px;background:radial-gradient(ellipse at 20% 40%,#008cff55,transparent 20%),radial-gradient(ellipse at 75% 40%,#00d9ff55,transparent 20%);filter:blur(16px);animation:fire 2s ease-in-out infinite alternate}
+@keyframes float{50%{transform:scaleX(-1) translateY(-12px) rotate(-2deg)}}@keyframes fire{to{opacity:.55;transform:scaleY(1.2)}}
+.hero{z-index:2;text-align:center;text-shadow:0 0 18px #00bfff}
+.hero h1{font-size:clamp(30px,7vw,68px);margin:0;color:var(--ice2);letter-spacing:2px}.hero p{font-size:18px;color:#bceeff;margin:12px}
+.clock{font-size:clamp(25px,5vw,45px);font-weight:800;color:white}.date{font-size:18px;color:var(--ice)}
+main{max-width:1180px;margin:auto;padding:18px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.card{background:linear-gradient(145deg,#07131fdd,#03080eee);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 0 28px #001522;position:relative;overflow:hidden}.card:after{content:"";position:absolute;inset:auto -30px -60px;height:100px;background:#00bfff16;filter:blur(20px)}
+h2{margin:0 0 12px;color:var(--ice2)}.today{border-color:#00bfff;box-shadow:0 0 28px #007cff35}
+.schedule{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.day{background:#06111b;border:1px solid #123e57;border-radius:14px;overflow:hidden}.day h3{margin:0;padding:10px;text-align:center;background:#0a2132;color:#aeefff}.lesson{padding:13px 8px;border-top:1px solid #123246;text-align:center;min-height:60px}.lesson b{color:#eafaff}.lesson small{display:block;color:#72c8ee;margin-top:3px}
+.badge{display:inline-block;padding:5px 9px;border-radius:999px;background:#0a2940;color:#7fe4ff;font-size:12px}.holiday{color:#ff9da3}.ok{color:#74ffcf}.warning{color:#ffd36e}
+#calendar{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.month{background:#06111b;border:1px solid #123e57;border-radius:14px;padding:10px}.month h3{text-align:center;color:var(--ice2);margin:4px}.week,.days{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}.week span{font-size:11px;color:#6ca9c4;text-align:center;padding:3px}.days span{font-size:12px;text-align:center;padding:6px 2px;border-radius:7px}.days .off{opacity:.25}.days .fri{color:#ff8d96}.days .holidayday{background:#421820;color:#ffb3b8}.days .todayday{outline:1px solid var(--ice);box-shadow:0 0 9px #00bfff}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{padding:15px;text-align:center;border:1px solid #164765;border-radius:14px;background:#06111b}.stat strong{display:block;font-size:27px;color:var(--ice2)}
+textarea,input,select,button{font:inherit}input,textarea,select{width:100%;background:#02080e;border:1px solid #164765;color:white;border-radius:10px;padding:10px}button{background:linear-gradient(135deg,#075b9b,#09aeea);border:0;color:white;padding:10px 16px;border-radius:10px;cursor:pointer;font-weight:bold}.task{display:flex;gap:8px;align-items:center;padding:9px;border-bottom:1px solid #123246}.task.done{text-decoration:line-through;opacity:.45}.task input{width:auto}.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.footer{text-align:center;color:#55768b;padding:25px}
+@media(max-width:800px){.grid,.schedule{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}#calendar{grid-template-columns:1fr}.day{display:grid;grid-template-columns:90px 1fr}.day h3{display:flex;align-items:center;justify-content:center}.lesson{min-height:50px}.hero{padding:25px}.dragon:before{font-size:120px;right:-5%}}
+
+/* ===== ULTRA ICE / NANO-LIGHT FX ===== */
+html{background:#01040a;scroll-behavior:smooth}
+body{background:
+radial-gradient(circle at 50% -10%,rgba(40,190,255,.20),transparent 28%),
+radial-gradient(circle at 5% 45%,rgba(0,110,255,.12),transparent 25%),
+radial-gradient(circle at 95% 65%,rgba(0,220,255,.10),transparent 24%),
+linear-gradient(180deg,#01050b,#020811 38%,#010307);}
+#fxCanvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:20;mix-blend-mode:screen;opacity:.78}
+.aurora{position:fixed;inset:-30%;pointer-events:none;z-index:-1;filter:blur(65px);opacity:.28;border-radius:50%;mix-blend-mode:screen}
+.aurora.a1{background:conic-gradient(from 20deg,transparent,#007cff55,transparent,#00eaff44,transparent);animation:aurora1 16s ease-in-out infinite}
+.aurora.a2{background:conic-gradient(from 180deg,transparent,#00bfff33,transparent,#1666ff44,transparent);animation:aurora2 22s ease-in-out infinite reverse}
+@keyframes aurora1{0%,100%{transform:rotate(0) scale(.9)}50%{transform:rotate(35deg) scale(1.15)}}
+@keyframes aurora2{0%,100%{transform:rotate(0) translate(3%,2%)}50%{transform:rotate(-30deg) translate(-4%,-2%)}}
+header{min-height:390px;box-shadow:0 0 80px #008cff22 inset,0 18px 70px #00111e}
+header:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 5px,rgba(130,235,255,.025) 6px),linear-gradient(90deg,transparent 0 48%,rgba(90,220,255,.08) 50%,transparent 52%);opacity:.7;animation:scanline 5s linear infinite}
+@keyframes scanline{to{background-position:0 80px,0 0}}
+.dragon{filter:saturate(1.3);box-shadow:inset 0 0 130px #008cff18}
+.dragon:before{font-size:clamp(180px,27vw,340px);right:7%;top:5px;filter:drop-shadow(0 0 12px #00bfff) drop-shadow(0 0 45px #006cff);opacity:.9;animation:dragonFloat 3.2s ease-in-out infinite,dragonGlow 1.8s ease-in-out infinite alternate}
+@keyframes dragonFloat{0%,100%{transform:scaleX(-1) translate3d(0,0,0) rotate(-2deg)}50%{transform:scaleX(-1) translate3d(-18px,-18px,0) rotate(2deg)}}
+@keyframes dragonGlow{to{filter:drop-shadow(0 0 20px #00eaff) drop-shadow(0 0 70px #006cff) brightness(1.15)}}
+.dragon-ring{position:absolute;border:1px solid #53ddff44;border-radius:50%;box-shadow:0 0 20px #00cfff55,inset 0 0 30px #00cfff22}
+.dragon-ring.r1{width:300px;height:300px;right:calc(7% + 10px);top:35px;animation:ring 8s linear infinite}
+.dragon-ring.r2{width:420px;height:420px;right:calc(7% - 50px);top:-25px;border-style:dashed;animation:ring 13s linear infinite reverse}
+@keyframes ring{to{transform:rotate(360deg)}}
+.dragon-eye{position:absolute;right:calc(7% + 98px);top:145px;width:8px;height:8px;background:#b8f8ff;border-radius:50%;box-shadow:0 0 10px #fff,0 0 25px #00d9ff,0 0 65px #008cff;animation:eye 1.1s ease-in-out infinite alternate}
+@keyframes eye{to{transform:scale(2);opacity:.55}}
+.hero{position:relative}
+.hero:before{content:"";position:absolute;inset:-40px -100px;background:radial-gradient(circle,#00cfff13 0 2px,transparent 3px);background-size:18px 18px;mask-image:radial-gradient(ellipse,black,transparent 72%);animation:nano 10s linear infinite;pointer-events:none}
+@keyframes nano{to{transform:translate(18px,18px)}}
+.hero h1{position:relative;text-shadow:0 0 8px #fff,0 0 22px #00cfff,0 0 55px #007cff;animation:titlePulse 2.4s ease-in-out infinite alternate}
+@keyframes titlePulse{to{filter:brightness(1.2);text-shadow:0 0 10px #fff,0 0 30px #00eaff,0 0 80px #006cff}}
+.clock{position:relative;text-shadow:0 0 8px #fff,0 0 20px #00d9ff,0 0 45px #007cff}
+.card{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 0 25px #001522,0 0 55px #007cff12,inset 0 0 35px #00cfff08;transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
+.card:hover{transform:translateY(-4px);border-color:#39d9ff;box-shadow:0 0 35px #00aaff33,0 0 90px #006cff18,inset 0 0 40px #00dfff0d}
+.card:before{content:"";position:absolute;top:-1px;left:-30%;width:55%;height:2px;background:linear-gradient(90deg,transparent,#fff,#00d9ff,transparent);box-shadow:0 0 14px #00d9ff;animation:cardSweep 4.5s linear infinite}
+@keyframes cardSweep{to{left:110%}}
+.day{box-shadow:inset 0 0 20px #00bfff08;transition:.3s;position:relative}
+.day:hover{transform:translateY(-3px) scale(1.01);border-color:#5be5ff;box-shadow:0 0 28px #00aaff33}
+.lesson{transition:.25s;position:relative;overflow:hidden}
+.lesson:after{content:"";position:absolute;left:-100%;top:0;width:50%;height:100%;background:linear-gradient(90deg,transparent,#8df1ff22,transparent);transform:skewX(-20deg);animation:lessonShine 5s linear infinite}
+@keyframes lessonShine{to{left:160%}}
+button{box-shadow:0 0 16px #009dff55,0 0 35px #007cff22;transition:.25s;position:relative;overflow:hidden}
+button:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 0 24px #00d9ff88,0 0 55px #007cff33}
+button:after{content:"";position:absolute;inset:-80%;background:linear-gradient(110deg,transparent 45%,#fff8 50%,transparent 55%);transform:translateX(-60%) rotate(8deg);animation:buttonFlash 3s linear infinite}
+@keyframes buttonFlash{to{transform:translateX(60%) rotate(8deg)}}
+.ice-shards{position:fixed;inset:0;pointer-events:none;z-index:10;overflow:hidden}
+.ice-shard{position:absolute;width:2px;height:70px;background:linear-gradient(transparent,#9ff6ff,#008cff,transparent);filter:blur(.2px);box-shadow:0 0 10px #00d9ff;opacity:.5;animation:fall linear infinite}
+@keyframes fall{from{transform:translate3d(0,-15vh,0) rotate(20deg)}to{transform:translate3d(12vw,115vh,0) rotate(220deg)}}
+.cursor-glow{position:fixed;left:0;top:0;width:180px;height:180px;border-radius:50%;pointer-events:none;z-index:30;background:radial-gradient(circle,#00d9ff18,transparent 65%);transform:translate(-50%,-50%);mix-blend-mode:screen}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}.cursor-glow,#fxCanvas{display:none}}
+@media(max-width:800px){header{min-height:340px}.dragon-ring.r1{right:0}.dragon-ring.r2{right:-80px}.dragon-eye{right:105px}.cursor-glow{display:none}#fxCanvas{opacity:.45}}
+
+</style>
+</head>
+<body>
+<canvas id="fxCanvas" aria-hidden="true"></canvas><div class="aurora a1"></div><div class="aurora a2"></div><div class="ice-shards" id="iceShards"></div><div class="cursor-glow" id="cursorGlow"></div>
+<header><div class="dragon"><div class="dragon-ring r1"></div><div class="dragon-ring r2"></div><div class="dragon-eye"></div><div class="dragon-sparks"></div></div><div class="hero">
+<h1>برنامه هفتگی نهم ۲</h1><p>سامانه اژدهای یخی • ساعت رسمی ایران / اصفهان • تغییر روز سایت: ۳:۰۰ بامداد</p>
+<div class="clock" id="clock">--:--:--</div><div class="date" id="date">در حال دریافت تاریخ...</div>
+</div></header>
+
+<main>
+<section class="grid">
+<div class="card today"><h2>🔥 وضعیت امروز</h2><div id="status">در حال بررسی...</div></div>
+<div class="card"><h2>📚 تکالیف قابل بردن</h2><div id="tasks"></div><div class="row" style="margin-top:10px"><input id="taskText" placeholder="مثلاً: تمرین صفحه ۲۵ ریاضی"><select id="taskDay"><option value="شنبه">شنبه</option><option value="یکشنبه">یکشنبه</option><option value="دوشنبه">دوشنبه</option><option value="سه‌شنبه">سه‌شنبه</option><option value="چهارشنبه">چهارشنبه</option></select></div><button style="margin-top:8px" onclick="addTask()">+ افزودن تکلیف</button></div>
+</section>
+
+<section class="card" style="margin-top:16px"><h2>🐉 برنامه سه‌زنگه</h2><div class="schedule" id="schedule"></div></section>
+
+<section class="card" style="margin-top:16px"><h2>❄️ آمار سال تحصیلی ۱۴۰۵–۱۴۰۶</h2><p class="badge">بازه محاسبه: ۱ مهر ۱۴۰۵ تا ۳۱ خرداد ۱۴۰۶ • پنجشنبه و جمعه روز مدرسه حساب نمی‌شوند.</p><div class="stats" id="stats"></div></section>
+
+<section class="card" style="margin-top:16px"><h2>📅 تقویم کامل ۱۴۰۵</h2><p class="badge">تعطیلات رسمی در تقویم با علامت مشخص می‌شوند.</p><div id="calendar"></div></section>
+
+<section class="card" style="margin-top:16px"><h2>🗒️ مناسبت و تعطیلی</h2><div id="holidayInfo"></div></section>
+<div class="footer">طراحی اژدهای یخی • نسخه آفلاین و تک‌فایله • بدون کتابخانه یا API خارجی</div>
+</main>
+
+
+<script>
+(()=>{
+ const c=document.getElementById('fxCanvas'),ctx=c.getContext('2d');let w,h,dpr,pts=[],mouse={x:-9999,y:-9999};
+ function resize(){dpr=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;c.width=w*dpr;c.height=h*dpr;c.style.width=w+'px';c.style.height=h+'px';ctx.setTransform(dpr,0,0,dpr,0,0);let n=Math.min(180,Math.floor(w*h/9000));pts=Array.from({length:n},()=>({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.7+.35,a:Math.random()*.75+.15}))}
+ function draw(){ctx.clearRect(0,0,w,h);for(const p of pts){let dx=mouse.x-p.x,dy=mouse.y-p.y,dist=Math.hypot(dx,dy);if(dist<150){p.vx+=dx/dist*.012;p.vy+=dy/dist*.012}p.x+=p.vx;p.y+=p.vy;p.vx*=.995;p.vy*=.995;if(p.x<0)p.x=w;if(p.x>w)p.x=0;if(p.y<0)p.y=h;if(p.y>h)p.y=0;ctx.beginPath();ctx.fillStyle=`rgba(95,225,255,${p.a})`;ctx.shadowBlur=12;ctx.shadowColor='#00cfff';ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()}
+ for(let i=0;i<pts.length;i+=2){let a=pts[i];for(let j=i+1;j<Math.min(i+7,pts.length);j++){let b=pts[j],dx=a.x-b.x,dy=a.y-b.y,dist=Math.hypot(dx,dy);if(dist<105){ctx.beginPath();ctx.strokeStyle=`rgba(45,190,255,${(1-dist/105)*.10})`;ctx.lineWidth=.6;ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}}requestAnimationFrame(draw)}
+ addEventListener('resize',resize);addEventListener('pointermove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;const g=document.getElementById('cursorGlow');if(g){g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'}});resize();draw();
+ const box=document.getElementById('iceShards');for(let i=0;i<26;i++){const s=document.createElement('i');s.className='ice-shard';s.style.left=Math.random()*100+'%';s.style.animationDuration=(6+Math.random()*11)+'s';s.style.animationDelay=(-Math.random()*14)+'s';s.style.height=(35+Math.random()*90)+'px';s.style.opacity=(.15+Math.random()*.5);box.appendChild(s)}
+})();
+</script>
+
+<script>
+const schedule={
+"شنبه":["زبان","علوم","دفاعی"],
+"یکشنبه":["هنر","ریاضی","فارسی"],
+"دوشنبه":["نگارش","علوم / فناوری","مطالعات"],
+"سه‌شنبه":["ورزش","عربی","ریاضی"],
+"چهارشنبه":["مطالعات / فناوری","پیام‌ها","قرآن"]
+};
+const weekdays=["شنبه","یکشنبه","دوشنبه","سه‌شنبه","چهارشنبه","پنجشنبه","جمعه"];
+const months=["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
+const SCHOOL_START=[1405,7,1];
+const SCHOOL_END=[1406,3,31];
+const SITE_DAY_CHANGE_HOUR=3; // ساعت ۳ بامداد به وقت ایران/اصفهان
+/* تعطیلات رسمی ۱۴۰۵؛ بر پایه فهرست تقویم ایران که در زمان ساخت بررسی شده است. */
+const holidays={
+"1405-1-1":"عید سعید فطر / آغاز نوروز",
+"1405-1-2":"تعطیل به مناسبت عید سعید فطر / نوروز",
+"1405-1-3":"نوروز",
+"1405-1-4":"نوروز",
+"1405-1-12":"روز جمهوری اسلامی ایران",
+"1405-1-13":"روز طبیعت",
+"1405-1-25":"شهادت امام جعفر صادق (ع)",
+"1405-3-6":"عید سعید قربان",
+"1405-3-14":"عید سعید غدیر خم / رحلت امام خمینی",
+"1405-3-15":"قیام ۱۵ خرداد",
+"1405-4-3":"تاسوعای حسینی",
+"1405-4-4":"عاشورای حسینی",
+"1405-5-13":"اربعین حسینی",
+"1405-5-21":"رحلت پیامبر اکرم (ص) / شهادت امام حسن مجتبی (ع)",
+"1405-5-22":"شهادت امام رضا (ع)",
+"1405-5-30":"شهادت امام حسن عسکری (ع) / آغاز امامت حضرت ولیعصر (عج)",
+"1405-6-8":"ولادت پیامبر اکرم (ص) / ولادت امام جعفر صادق (ع)",
+"1405-8-22":"شهادت حضرت فاطمه زهرا (س)",
+"1405-10-2":"ولادت امام علی (ع) / روز پدر",
+"1405-10-16":"مبعث حضرت رسول اکرم (ص)",
+"1405-11-4":"ولادت حضرت قائم (عج)",
+"1405-11-22":"پیروزی انقلاب اسلامی ایران",
+"1405-12-9":"شهادت حضرت علی (ع)",
+"1405-12-19":"عید سعید فطر",
+"1405-12-20":"تعطیل به مناسبت عید سعید فطر",
+"1405-12-29":"روز ملی شدن صنعت نفت ایران"
+};
+
+function faNum(s){return String(s).replace(/\d/g,d=>"۰۱۲۳۴۵۶۷۸۹"[d])}
+function toJalali(gy,gm,gd){
+ const gdm=[0,31,59,90,120,151,181,212,243,273,304,334];
+ let gy2=gy+(gm>2?1:0),days=355666+365*gy+Math.floor((gy2+3)/4)-Math.floor((gy2+99)/100)+Math.floor((gy2+399)/400)+gd+gdm[gm-1];
+ let jy=-1595+33*Math.floor(days/12053);days%=12053;jy+=4*Math.floor(days/1461);days%=1461;
+ if(days>365){jy+=Math.floor((days-1)/365);days=(days-1)%365}
+ let jm=1+(days<186?Math.floor(days/31):Math.floor((days-186)/30));
+ let jd=1+(days<186?days%31:(days-186)%30);
+ return [jy,jm,jd];
+}
+function jalaliDays(y,m){return m<=6?31:m<=11?30:((y%33===1||y%33===5||y%33===9||y%33===13||y%33===17||y%33===22||y%33===26||y%33===30)?30:29)}
+function jdn(y,m,d){let ep=Math.floor(y/2820),ey=y-2820*ep-474;return d+(m<=7?(m-1)*31:(m-1)*30+6)+Math.floor((ey*682-110)/2816)+(ey-1)*365+ep*1029983+1948320}
+function jToG(y,m,d){
+ let jd=jdn(y,m,d),l=jd+68569,n=Math.floor(4*l/146097);l-=Math.floor((146097*n+3)/4);let gy=Math.floor(4000*(l+1)/1461001);l-=Math.floor(1461*gy/4)+31;let gm=Math.floor(80*l/2447),gd=l-Math.floor(2447*gm/80);l=Math.floor(gm/11);gm=gm+2-12*l;gy=100*(n-49)+gy+l;return [gy,gm,gd]
+}
+function weekdayOf(y,m,d){let g=jToG(y,m,d),dt=new Date(Date.UTC(g[0],g[1]-1,g[2]));return (dt.getUTCDay()+1)%7} // Saturday=0
+
+function iranNow(){return new Date(new Date().toLocaleString("en-US",{timeZone:"Asia/Tehran"}))}
+function currentJ(){
+ let d=iranNow(), j=toJalali(d.getFullYear(),d.getMonth()+1,d.getDate());
+ /* تغییر «روز سایت» دقیقاً ساعت ۳:۰۰ بامداد ایران انجام می‌شود؛
+    بنابراین از ۰۰:۰۰ تا ۰۲:۵۹ هنوز روز قبلی نمایش داده می‌شود. */
+ if(d.getHours()<3){
+   let [y,m,day]=j; day--;
+   if(day<1){m--;if(m<1){m=12;y--}day=jalaliDays(y,m)}
+   j=[y,m,day];
+ }
+ return j;
+}
+function schoolDayName(j){return weekdays[weekdayOf(j[0],j[1],j[2])]}
+function nextSchoolDay(j){
+ let [y,m,d]=j; for(let i=0;i<370;i++){d++;if(d>jalaliDays(y,m)){d=1;m++;if(m>12){m=1;y++}}let w=schoolDayName([y,m,d]);let key=`${y}-${m}-${d}`;if(schedule[w]&&!holidays[key])return [y,m,d,w]} return null;
+}
+function update(){
+ let d=iranNow();let j=currentJ();
+ document.getElementById("clock").textContent=d.toLocaleTimeString("fa-IR",{hour12:false});
+ document.getElementById("date").textContent=`${weekdays[weekdayOf(...j)]} ${faNum(j[2])} ${months[j[1]-1]} ${faNum(j[0])}`;
+ let w=schoolDayName(j), off=holidays[`${j[0]}-${j[1]}-${j[2]}`], status=document.getElementById("status");
+ if(off) status.innerHTML=`<b class="holiday">امروز تعطیل است</b><br><span>${off}</span>`;
+ else if(schedule[w]) status.innerHTML=`امروز <b>${w}</b> است؛ سه زنگ: ${schedule[w].map((x,i)=>`زنگ ${i+1}: ${x}`).join(" • ")}`;
+ else status.innerHTML=`امروز <b>${w}</b> است و در این برنامه روز مدرسه ثبت نشده.`;
+ renderStats(j);
+}
+function renderSchedule(){
+ let el=document.getElementById("schedule");
+ el.innerHTML=weekdays.slice(0,5).map(w=>`<div class="day"><h3>${w}</h3>${schedule[w].map((x,i)=>`<div class="lesson"><span class="badge">زنگ ${i+1}</span><br><b>${x}</b></div>`).join("")}</div>`).join("");
+}
+function getTasks(){return JSON.parse(localStorage.getItem("iceTasks")||"[]")}
+function saveTasks(a){localStorage.setItem("iceTasks",JSON.stringify(a))}
+function renderTasks(today){
+ let a=getTasks(), next=nextSchoolDay(currentJ()), wanted=new Set([today,next&&next[3]]);
+ let arr=a.filter(t=>wanted.has(t.day)&&!t.done);
+ document.getElementById("tasks").innerHTML=arr.length?arr.map((t,i)=>`<div class="task"><input type="checkbox" onchange="toggleTask(${i})"><span>${t.text} <small class="badge">${t.day}</small></span></div>`).join(""):`<div class="muted">فعلاً تکلیفی ثبت نشده. می‌توانی تکالیفت را پایین اضافه کنی.</div>`;
+}
+function addTask(){let text=document.getElementById("taskText").value.trim(),day=document.getElementById("taskDay").value;if(!text)return;let a=getTasks();a.push({text,day,done:false});saveTasks(a);document.getElementById("taskText").value="";renderTasks(schoolDayName(currentJ()))}
+function toggleTask(i){let a=getTasks();let today=schoolDayName(currentJ()),next=nextSchoolDay(currentJ());let wanted=new Set([today,next&&next[3]]),arr=a.filter(t=>wanted.has(t.day)&&!t.done);let target=arr[i];let idx=a.indexOf(target);if(idx>=0)a[idx].done=true;saveTasks(a);renderTasks(today)}
+function isSchoolDay(y,m,d){
+ const w=weekdayOf(y,m,d), key=`${y}-${m}-${d}`;
+ return w<=4 && !holidays[key];
+}
+function countSchoolDays(a,b){
+ let start=jdn(...a), end=jdn(...b), count=0;
+ for(let n=start;n<=end;n++){
+   // Convert JDN back through a small search-free progression using Gregorian date.
+   // We only need a bounded school-year range, so walk Jalali dates directly instead.
+ }
+ let [y,m,d]=a;
+ while(jdn(y,m,d)<=jdn(...b)){
+   if(isSchoolDay(y,m,d)) count++;
+   d++;
+   if(d>jalaliDays(y,m)){d=1;m++;if(m>12){m=1;y++}}
+ }
+ return count;
+}
+function renderStats(j){
+ const start=SCHOOL_START,end=SCHOOL_END;
+ const nowJ=j;
+ let remaining=0, total=countSchoolDays(start,end), passed=0;
+ if(jdn(...j)<jdn(...start)) remaining=total;
+ else if(jdn(...j)>jdn(...end)) remaining=0;
+ else{
+   let tomorrow=[...j]; tomorrow[2]++;
+   if(tomorrow[2]>jalaliDays(tomorrow[0],tomorrow[1])){tomorrow[2]=1;tomorrow[1]++;if(tomorrow[1]>12){tomorrow[1]=1;tomorrow[0]++}}
+   remaining=countSchoolDays(tomorrow,end);
+   passed=Math.max(0,total-remaining);
+ }
+ const pct=total?Math.round(remaining/total*100):0;
+ document.getElementById("stats").innerHTML=
+ `<div class="stat"><strong>${faNum(remaining)}</strong>روز مدرسه باقی‌مانده</div>
+ <div class="stat"><strong>${faNum(total)}</strong>روز مدرسه در بازه</div>
+ <div class="stat"><strong>${faNum(passed)}</strong>روز مدرسه گذشته</div>
+ <div class="stat"><strong>${faNum(pct)}%</strong>از روزهای مدرسه باقی‌مانده</div>`;
+}
+function renderCalendar(){
+ let out="";
+ for(let m=1;m<=12;m++){let first=weekdayOf(1405,m,1),days=jalaliDays(1405,m);out+=`<div class="month"><h3>${months[m-1]}</h3><div class="week">${weekdays.map(x=>`<span>${x.slice(0,1)}</span>`).join("")}</div><div class="days">`;
+ for(let i=0;i<first;i++)out+=`<span class="off"></span>`;
+ for(let d=1;d<=days;d++){let key=`1405-${m}-${d}`,cls=(weekdayOf(1405,m,d)===6?"fri ":"")+(holidays[key]?"holidayday ":"");let j=currentJ();if(j[0]===1405&&j[1]===m&&j[2]===d)cls+="todayday";out+=`<span class="${cls}" title="${holidays[key]||""}">${faNum(d)}</span>`}out+="</div></div>"}
+ document.getElementById("calendar").innerHTML=out;
+}
+function renderHolidayInfo(){
+ let j=currentJ(),key=`${j[0]}-${j[1]}-${j[2]}`,n=nextSchoolDay(j),nkey=n?`${n[0]}-${n[1]}-${n[2]}`:"",h=holidays[key],nh=holidays[nkey];
+ let tomorrow=[j[0],j[1],j[2]+1]; if(tomorrow[2]>jalaliDays(tomorrow[0],tomorrow[1])){tomorrow[2]=1;tomorrow[1]++;if(tomorrow[1]>12){tomorrow[1]=1;tomorrow[0]++}}
+ let tk=`${tomorrow[0]}-${tomorrow[1]}-${tomorrow[2]}`,th=holidays[tk];
+ document.getElementById("holidayInfo").innerHTML=
+ `<p>امروز: ${h?`<span class="holiday">تعطیل — ${h}</span>`:"تعطیل رسمی ثبت‌شده ندارد."}</p>
+ <p><b>فردا تعطیل است؟</b> ${th?`<span class="holiday">بله — ${th}</span>`:"<span class="ok">خیر، تعطیلی رسمی ثبت‌شده ندارد.</span>"}</p>
+ <p>روز مدرسه بعدی: <b>${n?n[3]+" "+faNum(n[2])+" "+months[n[1]-1]:"-"}</b>${nh?` — <span class="holiday">تعطیل: ${nh}</span>`:" — تعطیلی رسمی ثبت‌شده ندارد."}</p>`;
+}
+renderSchedule();renderCalendar();renderHolidayInfo();renderTasks(schoolDayName(currentJ()));update();
+setInterval(update,1000);
+setInterval(()=>{renderHolidayInfo();renderCalendar();renderTasks(schoolDayName(currentJ()))},60000);
+</script>
+</body></html>
